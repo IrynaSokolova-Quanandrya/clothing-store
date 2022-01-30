@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 80px;
 }
 .nav__list {
 	display: flex;
@@ -50,7 +51,7 @@
 .logo {
 	width: 31px;
 	height: 28px;
-	background-image: url(../images/Logo.svg);
+	background-image: url(../../images/Logo.svg);
 }
 .buttons {
 	display: flex;
@@ -63,7 +64,7 @@
 	border: none;
 
 	background-color: #fff;
-	background-image: url(../images/close.svg);
+	background-image: url(../../images/close.svg);
 	background-repeat: no-repeat;
 	background-position: 100% 60%;
 
@@ -74,14 +75,14 @@
 	line-height: 160%;
 }
 .currency__btn.is-open {
-	background-image: url(../images/open.svg);
+	background-image: url(../../images/open.svg);
 }
 .cart__btn {
 	width: 20px;
 	height: 20px;
 	border: none;
 	background-color: #fff;
-	background-image: url(../images/Empty\ Cart.svg);
+	background-image: url(../../images/Empty\ Cart.svg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }

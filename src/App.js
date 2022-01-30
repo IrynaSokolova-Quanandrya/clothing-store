@@ -1,4 +1,5 @@
 import './App.css';
+import CardsList from './components/CardsList/CardsList';
 import Container from './components/Container';
 import Header from './components/Header/Header';
 // import {
@@ -43,7 +44,8 @@ function App() {
   
   return (
     <Container>
-    <Header/>
+        <Header/>
+        <CardsList/>
     </Container>
   );
 }

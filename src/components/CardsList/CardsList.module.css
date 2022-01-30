@@ -1,0 +1,18 @@
+/* .cards__section { */
+/* margin-top: 80px; */
+/* } */
+.cards__title {
+	margin-bottom: 88px;
+
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 42px;
+	line-height: 160%;
+}
+.cards__list {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -30px;
+	margin-top: -30px;
+}
