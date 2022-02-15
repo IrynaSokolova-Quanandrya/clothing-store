@@ -1,8 +1,10 @@
 .header {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 80px;
+	padding: 0 101px;
 }
 .nav__list {
 	display: flex;
@@ -57,6 +59,10 @@
 	display: flex;
 	align-items: center;
 }
+.buttons:hover,
+.buttons:active {
+	color: #5ece7b;
+}
 .currency__btn {
 	width: 38px;
 	height: 29px;
@@ -73,6 +79,8 @@
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 160%;
+
+	pointer-events: all;
 }
 .currency__btn.is-open {
 	background-image: url(../../images/open.svg);
@@ -81,8 +89,11 @@
 	width: 20px;
 	height: 20px;
 	border: none;
+
 	background-color: #fff;
 	background-image: url(../../images/Empty\ Cart.svg);
 	background-repeat: no-repeat;
 	background-size: cover;
+
+	pointer-events: fill;
 }

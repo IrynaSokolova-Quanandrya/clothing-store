@@ -1,7 +1,7 @@
 import './App.css';
-import CardsList from './components/CardsList/CardsList';
 import Container from './components/Container';
 import Header from './components/Header/Header';
+import CategoryPage from './components/pages/CategoryPage/CategoryPage';
 // import {
 //   ApolloClient,
 //   InMemoryCache,
@@ -45,7 +45,7 @@ function App() {
   return (
     <Container>
         <Header/>
-        <CardsList/>
+        <CategoryPage/>
     </Container>
   );
 }

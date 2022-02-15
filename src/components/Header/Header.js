@@ -1,7 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
+import CurrencySwitcher from "../CurrencySwitcher";
 import s from './Header.module.css'
 
-export default function Header(){
+export default class Header extends Component {
+    state = {
+        visible: false
+    }
+
+    toggleCurrency = () => {
+        this.setState(prev=>({
+            visible: !prev.visible
+        }))
+    }
+    toggleCart = () => {
+        this.setState(prev=>({
+            visible: !prev.visible
+        }))
+    }
+    render(){
     return(
         <header className={s.header}>
             <div>
@@ -21,11 +37,13 @@ export default function Header(){
             </div>    
                 <a href="/" className={s.logo}>logo</a>
                 <div className={s.buttons}>
-                    <button type="button" className={s.currency__btn}>$</button>
-                    <button type="button" className={s.cart__btn}></button>
+                    <button type="button" onClick={this.toggleCurrency} className={s.currency__btn}>$</button>
+                    {this.state.visible && <CurrencySwitcher/>}
+                    <button type="button" onClick={this.toggleCart} className={s.cart__btn}></button>
                 </div>
             
 
         </header>
     )
+    }
 }
