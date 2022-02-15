@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CartOverlay from "../CartOverlay/CartOverlay";
 import CurrencySwitcher from "../CurrencySwitcher";
 import s from './Header.module.css'
 
@@ -40,6 +41,7 @@ export default class Header extends Component {
                     <button type="button" onClick={this.toggleCurrency} className={s.currency__btn}>$</button>
                     {this.state.visible && <CurrencySwitcher/>}
                     <button type="button" onClick={this.toggleCart} className={s.cart__btn}></button>
+                    <CartOverlay/>
                 </div>
             
 
