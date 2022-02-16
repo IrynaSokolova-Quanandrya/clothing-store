@@ -59,10 +59,10 @@
 	display: flex;
 	align-items: center;
 }
-.buttons:hover,
+/* .buttons:hover,
 .buttons:active {
 	color: #5ece7b;
-}
+} */
 .currency__btn {
 	width: 38px;
 	height: 29px;
