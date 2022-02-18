@@ -5,7 +5,8 @@ import s from './Header.module.css'
 
 export default class Header extends Component {
     state = {
-        visible: false
+        visible: false,
+        showModal: false
     }
 
     toggleCurrency = () => {
@@ -15,7 +16,7 @@ export default class Header extends Component {
     }
     toggleCart = () => {
         this.setState(prev=>({
-            visible: !prev.visible
+            showModal: !prev.showModal
         }))
     }
     render(){
@@ -25,13 +26,13 @@ export default class Header extends Component {
             <nav className={s.nav}>
                 <ul className={s.nav__list}>
                     <li className={s.nav__item}>
-                        <a href="/" className={s.current}>Women</a>
+                        <a href="/" className={s.current}>All</a>
                     </li>
                     <li className={s.nav__item}>
-                        <a href="/" className={s.nav__link}>Men</a>
+                        <a href="/" className={s.nav__link}>Clothes</a>
                     </li>
                     <li className={s.nav__item}>
-                        <a href="/" className={s.nav__link}>Kids</a>
+                        <a href="/" className={s.nav__link}>Tech</a>
                     </li>
                 </ul>
             </nav>            
@@ -41,7 +42,7 @@ export default class Header extends Component {
                     <button type="button" onClick={this.toggleCurrency} className={s.currency__btn}>$</button>
                     {this.state.visible && <CurrencySwitcher/>}
                     <button type="button" onClick={this.toggleCart} className={s.cart__btn}></button>
-                    <CartOverlay/>
+                    {this.state.showModal && <CartOverlay/>}
                 </div>
             
 

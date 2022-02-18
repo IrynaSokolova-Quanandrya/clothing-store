@@ -1,0 +1,77 @@
+.cartOverlay__item {
+	display: flex;
+}
+.cartOverlay__item:not(:last-child) {
+	margin-bottom: 40px;
+}
+.cartOverlay__prod {
+	font-weight: 300;
+	font-style: normal;
+	font-size: 16px;
+	line-height: 160%;
+}
+.cartOverlay__price {
+	margin-bottom: 27px;
+	font-style: normal;
+	font-size: 16px;
+	line-height: 160%;
+	font-weight: 500;
+}
+.custom__checkbox {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.custom__checkbox + label {
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+}
+.custom__checkbox + label::before {
+	content: '';
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	flex-shrink: 0;
+	flex-grow: 0;
+	border: 1px solid #a6a6a6;
+	margin-right: 8px;
+	background-color: rgba(166, 166, 166, 0.2);
+	background-image: url('../../images/M.svg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 50% 50%;
+}
+.custom__checkbox:checked + label::before {
+	border-color: #000;
+	background-color: #fff;
+}
+/* стили при наведении курсора на checkbox */
+.custom__checkbox:not(:disabled):not(:checked) + label:hover::before {
+	border-color: #000;
+}
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.custom__checkbox:not(:disabled):active + label::before {
+	background-color: #fff;
+	border-color: #000;
+}
+
+/* стили для чекбокса, находящегося в состоянии disabled */
+/* .custom__checkbox:disabled + label::before {
+	background-color: #e9ecef;
+} */
+.counter {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.counter__btn {
+	width: 24px;
+	height: 24px;
+	background-color: #fff;
+	border: 1px solid #000;
+}
+.cartOverlay__img {
+	width: 137px;
+}
