@@ -73,27 +73,26 @@ import {
     const result = await client
      .query({
        query: gql`
-         query GetAllCategories {          
-          categories{
-            name,
+         query fetchDataForCard {          
+          category{
             products{
-              id,             
-              gallery,            
-              category,              
+              id,  
+              name,           
+              gallery,                  
               prices{
                 currency{
                   label,
                   symbol
                 }
                 amount
-              }
-              brand
+              }             
             }
           }
          }
        `
      })
-     const categories = await result.data.categories
+     const products = await result.data.category.products
+     return products;
     //  console.log(categories);
    }
 

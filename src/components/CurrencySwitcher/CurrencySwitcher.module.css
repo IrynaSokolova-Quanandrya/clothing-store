@@ -14,3 +14,7 @@
 	border: none;
 	background-color: #fff;
 }
+
+.currency__btn:focus {
+	color: #5ece7b;
+}
