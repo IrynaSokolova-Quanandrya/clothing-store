@@ -2,7 +2,7 @@ import {configureStore, combineReducers, getDefaultMiddleware } from "@reduxjs/t
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import weatherReducer from './reducers'
+import productReducer from './reducers'
 import {
     persistStore,
     persistReducer,
@@ -24,13 +24,13 @@ const middleware = [
 
 ]
 const persistConfig = {
-    key: "city",
+    key: "product",
     storage,
-    whitelist: ['citiesReducer']
+    whitelist: ['productId']
   };
   
 const rootReducer = combineReducers({
-    cities: persistReducer(persistConfig, weatherReducer),
+    products: persistReducer(persistConfig, productReducer),
 
 })
 

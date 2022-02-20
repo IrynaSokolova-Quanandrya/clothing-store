@@ -1,26 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
-} from "@apollo/client";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ApolloProvider}  from "@apollo/client";
 import './index.css';
 import App from './App';
+import { store, persistor } from "./redux/store";
+import {client} from "./serviceApi"
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/',
-  cache: new InMemoryCache()
-});
-
-
+console.log(store.getState());
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <Provider store={store}>
+     <ApolloProvider client={client}>
+      <PersistGate loading={null} persistor={persistor}>
+         <App />
+      </PersistGate>
+     </ApolloProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

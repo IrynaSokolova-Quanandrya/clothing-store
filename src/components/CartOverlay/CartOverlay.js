@@ -1,8 +1,9 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import CartOverlayItem from "../CartOverlayItem";
 import s from "./CartOverlay.module.css";
 
-export default class CartOverlay extends Component{
+class CartOverlay extends Component{
     render(){
         return(
             <div className={s.backdrop}>
@@ -25,3 +26,6 @@ export default class CartOverlay extends Component{
         )
     }
 }
+
+
+export default connect()(CartOverlay)

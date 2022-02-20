@@ -3,3 +3,13 @@
 	margin-left: 30px;
 	margin-top: 30px;
 }
+.card__btn {
+	width: 52px;
+	height: 52px;
+	border: none;
+	border-radius: 50%;
+	background-color: #5ece7b;
+	background-image: url('../../images/Empty\ Cart.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+}

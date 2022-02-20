@@ -1,78 +1,64 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
-import weatherActions from './actions';
+import { fetchAllProducts,fetchById } from './operations';
 
-const citiesReducer = createReducer([],{
-    [weatherActions.addCitySuccess]: (state, {payload})=>[
-        ...state,
-        payload
-    ],
-    [weatherActions.deleteCity]: (state, {payload})=>
-    state.filter(({id})=>id !== payload),
+const products = createReducer([],{
+    [fetchAllProducts.fulfilled]: (_, {payload})=>[...payload],
+    // [weatherActions.deleteCity]: (state, {payload})=>
+    // state.filter(({id})=>id !== payload),
 
-    [weatherActions.updateCitySuccess]: (state, {payload}) =>
-    state.map((city) => {
-      if (city.id === payload.id) {
-        return payload;
-      }
-      return city;
-    }),
+    // [weatherActions.updateCitySuccess]: (state, {payload}) =>
+    // state.map((city) => {
+    //   if (city.id === payload.id) {
+    //     return payload;
+    //   }
+    //   return city;
+    // }),
 });
 
-const cityIdReducer = createReducer("", {
-    [weatherActions.cityId]: (_, {payload}) => payload,
+const productId = createReducer([], {
+    [fetchById.fulfilled]: (state, {payload}) =>
+    [...state, payload]
+    // state.map((product) => {
+    //   if(product.id === payload.id){
+    //     return state
+    //   }
+    //   return [...state, product]
+    // }
+    // )
+});
+  
+  
+const isLoading = createReducer(false, {
+    [fetchAllProducts.pending]: () => true,
+    [fetchAllProducts.fulfilled]: () => false,
+    [fetchAllProducts.rejected]: () => false,
+    [fetchById.pending]: () => true,
+    [fetchById.fulfilled]: () => false,
+    [fetchById.rejected]: () => false,
+
   });
   
-const hourlyWeatherReducer = createReducer([], {
-    [weatherActions.getHourlyWeatherSuccess]: (_, {payload}) =>
-      payload.hourly,
-  });
-  
-const loadingReducer = createReducer(false, {
-    [weatherActions.addCityRequest]: () => true,
-    [weatherActions.addCitySuccess]: () => false,
-    [weatherActions.addCityError]: () => false,
-    [weatherActions.updateCityRequest]: () => true,
-    [weatherActions.updateCitySuccess]: () => false,
-    [weatherActions.updateCityError]: () => false,
-    [weatherActions.getHourlyWeatherRequest]: () => true,
-    [weatherActions.getHourlyWeatherSuccess]: () => false,
-    [weatherActions.getHourlyWeatherError]: () => false,
-  });
-  
-const errorReducer = createReducer(
+const error = createReducer(
     { error: false },
     {
-      [weatherActions.addCityError]: (_, {payload}) => ({
+      [fetchAllProducts.rejected]: (_, {payload}) => ({
         error: true,
-        message: payload.message,
+        message: payload,
       }),
-      [weatherActions.addCitySuccess]: () => ({
-        error: false,
+      [fetchAllProducts.pending]: () => null,
+      [fetchById.rejected]: (_, {payload}) => ({
+        error: true,
+        message: payload,
       }),
+      // [fetchById.pending]: () => null,
   
-      [weatherActions.updateCityError]: (_, {payload}) => ({
-        error: true,
-        message: payload.message,
-      }),
-      [weatherActions.updateCitySuccess]: () => ({
-        error: false,
-      }),
-      [weatherActions.getHourlyWeatherError]: (_, {payload}) => ({
-        error: true,
-        message: payload.message,
-      }),
-      [weatherActions.getHourlyWeatherSuccess]: () => ({
-        error: false,
-      }),
-      [weatherActions.errorOff]: (_, {payload}) => payload,
     }
   );
 
   export default combineReducers({
-    citiesReducer,
-    cityIdReducer,
-    hourlyWeatherReducer,
-    loadingReducer,
-    errorReducer
+    products,
+    productId,
+    isLoading,
+    error,
   })
   

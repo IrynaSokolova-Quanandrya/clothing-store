@@ -1,73 +1,91 @@
 import {
     ApolloClient,
     InMemoryCache,
-    ApolloProvider,
-    useQuery,
     gql
   } from "@apollo/client";
 
-  const client = new ApolloClient({
+ export const client = new ApolloClient({
     uri: 'http://localhost:4000/',
     cache: new InMemoryCache()
   });
-  // const client = ...
   
-
-
- async function fetchAllCategories(){
+ async function fetchProductById(){
    const result = await client
     .query({
       query: gql`
-        query GetAllCategories {          
-            categories{
-             name
-           }
-        }
-      `
-    })
-    const categories = await result.data.categories
-    // console.log(categories);
-  }
-  async function fetchAllData(){
-    const result = await client
-     .query({
-       query: gql`
-         query GetAllCategories {          
-          categories{
+        query fetchProductById($prodId: String!) {          
+          product(id: $prodId){      
             name,
-            products{
+            inStock,
+            gallery,
+            description,
+            category,
+            attributes{
               id,
               name,
-              inStock,
-              gallery,
-              description,
-              category,
-              attributes{
-                id,
-                name,
-                type,
-                items{
-                  displayValue,
-                  value,
-                  id
-                }
+              type,
+              items{
+                displayValue,
+                value,
+                id
               }
-              prices{
-                currency{
-                  label,
-                  symbol
-                }
-                amount
-              }
-              brand
             }
-          }
-         }
-       `
-     })
-     const categories = await result.data.categories
-    //  console.log(result);
-   }
+            prices{
+              currency{
+                label,
+                symbol
+              }
+              amount
+            }
+            brand
+        }
+      }
+      `
+    })
+    const product = await result.data.product
+    return product;
+    // console.log(categories);
+  }
+  // async function fetchAllData(){
+  //   const result = await client
+  //    .query({
+  //      query: gql`
+  //        query GetAllCategories {          
+  //         categories{
+  //           name,
+  //           products{
+  //             id,
+  //             name,
+  //             inStock,
+  //             gallery,
+  //             description,
+  //             category,
+  //             attributes{
+  //               id,
+  //               name,
+  //               type,
+  //               items{
+  //                 displayValue,
+  //                 value,
+  //                 id
+  //               }
+  //             }
+  //             prices{
+  //               currency{
+  //                 label,
+  //                 symbol
+  //               }
+  //               amount
+  //             }
+  //             brand
+  //           }
+  //         }
+  //        }
+  //      `
+  //    })
+  //    const product = await result.data
+  //    console.log(product);
+  //  }
 
    async function fetchDataForCard(){
     const result = await client
@@ -97,8 +115,7 @@ import {
    }
 
    const api = {
-    fetchAllCategories,
-    fetchAllData,
+    fetchProductById,
     fetchDataForCard,
   }
 export default api 
