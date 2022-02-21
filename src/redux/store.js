@@ -26,7 +26,7 @@ const middleware = [
 const persistConfig = {
     key: "product",
     storage,
-    whitelist: ['productId']
+    whitelist: ['cart']
   };
   
 const rootReducer = combineReducers({

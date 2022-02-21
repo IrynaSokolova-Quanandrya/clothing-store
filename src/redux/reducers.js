@@ -2,7 +2,7 @@ import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import { fetchAllProducts,fetchById } from './operations';
 
 const products = createReducer([],{
-    [fetchAllProducts.fulfilled]: (_, {payload})=>[...payload],
+    [fetchAllProducts.fulfilled]: (_, {payload})=>payload,
     // [weatherActions.deleteCity]: (state, {payload})=>
     // state.filter(({id})=>id !== payload),
 
@@ -15,7 +15,7 @@ const products = createReducer([],{
     // }),
 });
 
-const productId = createReducer([], {
+const cart = createReducer([], {
     [fetchById.fulfilled]: (state, {payload}) =>
     [...state, payload]
     // state.map((product) => {
@@ -57,7 +57,7 @@ const error = createReducer(
 
   export default combineReducers({
     products,
-    productId,
+    cart,
     isLoading,
     error,
   })

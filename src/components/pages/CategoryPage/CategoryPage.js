@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import s from "./CategoryPage.module.css";
 import Card from '../../Card';
 // import api from '../../../serviceApi';
@@ -23,9 +23,8 @@ class CategoryPage extends Component{
                             img={gallery}
                             title={name}
                             price={prices}
-                            id={id}
-            />
-        )               
+                            id={id}/>
+            )
             }
             </ul>
             </section>

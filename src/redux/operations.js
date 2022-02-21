@@ -10,8 +10,8 @@ export const fetchAllProducts = createAsyncThunk(
 
 export const fetchById = createAsyncThunk(
   "product/getProductByIdRequest",
-  async ()=>{
-    const product = await api.fetchProductById();
+  async (id)=>{
+    const product = await api.fetchProductById(id);
     return product;
   }); 
 

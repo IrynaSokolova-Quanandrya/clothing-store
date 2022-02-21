@@ -8,7 +8,7 @@ import App from './App';
 import { store, persistor } from "./redux/store";
 import {client} from "./serviceApi"
 
-console.log(store.getState());
+// console.log(store.getState());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
